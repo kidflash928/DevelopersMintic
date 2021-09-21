@@ -1,0 +1,73 @@
+@page "/"
+
+
+<div class="form-label">
+    <label>Formulario pelicula</label>
+</div>
+
+
+<div>
+    @* Primero se debe de crear la fila, dentro de ella las columnas *@
+    <div class="mb-3">
+        <input class="form-control form-control" type="text" placeholder="Nombre película"
+            aria-label=".form-control-sm example">
+    </div>
+    @* Fila 2: una fila con dos columnas en pantalla mediana y grande
+        en pantalla pequeña se visualizara como dos filas con una columna c/u *@
+    <div class="mb-3">
+        @* Columna 1 *@
+        <select class="form-select">
+            <option selected>Selecciona el género de la película</option>
+            <option value="1">Acción</option>
+            <option value="2">Drama</option>
+            <option value="3">Suspenso</option>
+            <option value="4">Terror</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        @* Columna 2 *@
+        <input class="form-control form-control" type="number" placeholder="Puntuación"
+            aria-label=".form-control-sm example">
+    </div>
+
+</div>
+
+<div class="mb-3">
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="correo_electronico@example.com">
+</div>
+<div class="mb-3">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<div>
+    <p>Hola, @UtilidadesString.funcion_convert_mayus(nombre_pelicula)</p>
+    <p>Hola, @UtilidadesString.funcion_convert_minus(nombre_pelicula)</p>
+</div>
+
+<div>
+    <button class="btn btn-primary" type="button" @onclick="@ConsultarMensajeConsola"> Aceptar</button>
+    <button class="btn btn-danger" type="button" @onclick="@ConsultarMensajeConsola"> Cancelar</button>
+    
+</div>
+
+<div>
+    <h3>Pelicula</h3>
+    <p>Nombre: <b> @Titanic_Ins.Titulo</b></p>
+    <p>Fecha Lanzamiento: <b>@Titanic_Ins.Premier</b></p>
+</div>
+@code {
+    string nombre_pelicula = "Misión TIC 2022";
+    public Pelicula Titanic_Ins {get { return MostrarPelicula();}}
+    private Pelicula MostrarPelicula()
+    {
+        return new Pelicula()
+        {
+            Titulo = "Titanic",
+            Premier = new DateTime(2000 , 6, 20)
+        };
+
+    }
+    private void ConsultarMensajeConsola()
+    {
+        Console.WriteLine("Validando evento clic del botón");
+    }
+}
