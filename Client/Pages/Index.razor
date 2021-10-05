@@ -1,0 +1,14 @@
+﻿@page "/"
+@using Peliculas.Client.Pages.Componentes
+@inject IserviciosPeliculas pelicula
+<div class="jumbotron">
+    <ComponentePeliculas Peliculas ="Peliculas"></ComponentePeliculas>
+</div>
+@code{
+    private List<Pelicula> Peliculas;
+    protected override void OnInitialized()
+    {
+        Peliculas = pelicula.GetPelicula();
+    }
+}
+

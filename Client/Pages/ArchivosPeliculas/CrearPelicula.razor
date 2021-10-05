@@ -1,0 +1,34 @@
+@page "/peliculas/crear"
+@inject NavigationManager navigationManager
+@using Peliculas.Client.Pages.Componentes
+<h6>Crear Pelicula</h6>
+<FormularioPelicula Pelicula="Pelicula" OnValidSubmit="Crear" CategoriasNoSeleccionadas="CategoriasNoSeleccionadas"></FormularioPelicula>
+@code
+{
+    private Pelicula Pelicula = new Pelicula();
+    private List<Categoria> CategoriasNoSeleccionadas = new List<Categoria>();
+
+    protected override void OnInitialized()
+    {
+        CategoriasNoSeleccionadas = new List<Categoria>()
+            {
+                new Categoria(){Id= 1, Nombre="Comedia"},
+                new Categoria(){Id = 2, Nombre="Terror"},
+                new Categoria(){Id = 3,Nombre="Ciencia Ficción"},
+                new Categoria(){Id= 4,Nombre="Documentales"},
+                new Categoria(){Id = 5,Nombre="Acción"}
+            };
+    }
+    void Crear()
+    {
+        @*Con el navigationManager vamos a redireccionar al usuario a otras rutas dentro del sistema *@
+        Console.WriteLine(navigationManager.Uri);
+        navigationManager.NavigateTo("pelicula");
+        Console.WriteLine($"Pelicula:{Pelicula.Nombre}");
+        Console.WriteLine($"Lanzamiento:{Pelicula.Lanzamiento}");
+        Console.WriteLine($"Esta en cartelera:{Pelicula.EnCartelera}");
+        Console.WriteLine($"Poster:{Pelicula.Imagen}");
+        Console.WriteLine($"Sinopsis:{Pelicula.Sinopsis}");
+
+    }
+}

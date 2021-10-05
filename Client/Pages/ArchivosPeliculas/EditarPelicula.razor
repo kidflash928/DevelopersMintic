@@ -1,0 +1,27 @@
+@page "/peliculas/editar/{PeliculaId:int}"
+@using Peliculas.Client.Pages.Componentes
+<h6>Editar pelicula</h6>
+<FormularioPelicula Pelicula="Pelicula" OnValidSubmit ="Editar"></FormularioPelicula>
+@code
+{
+    [Parameter] public int Id {get;set;}
+    private Pelicula Pelicula;
+    protected override void OnInitialized()
+    {
+        Pelicula= new Pelicula()
+        {
+            Nombre ="El juego del calamar",
+            EnCartelera = true,
+            Sinopsis = "Sinopsis ...",
+            Trailer="Trailer"
+        };
+    }
+    void Editar()
+    {
+        Console.WriteLine($"Pelicula: {Pelicula.Nombre}");
+        Console.WriteLine($"Lanzamiento: {Pelicula.Lanzamiento}");
+        Console.WriteLine($"Esta en cartelera: {Pelicula.EnCartelera}");
+        Console.WriteLine($"Poster: {Pelicula.Imagen}");
+        Console.WriteLine($"Sinopsis: {Pelicula.Sinopsis}");
+    }
+}

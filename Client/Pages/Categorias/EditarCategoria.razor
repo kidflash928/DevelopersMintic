@@ -1,0 +1,23 @@
+@page "/categoria/editar/{Id:int}"
+@using Peliculas.Client.Pages.Componentes
+<h6>Editar categoria</h6>
+<FormularioCategoria OnValidSubmit="Editar" Categoria="Categoria"></FormularioCategoria>
+@code
+{
+    [Parameter] public int Id {get;set;}
+    private Categoria Categoria;
+
+    protected override void OnInitialized(){
+        Categoria = new Categoria()
+        {
+            Id = Id,
+            Nombre="Comedia"
+        };
+    }
+
+    private void Editar()
+    {
+        Console.WriteLine($"Id: {Categoria.Id}");
+        Console.WriteLine($"Id: {Categoria.Nombre}");
+    }
+}

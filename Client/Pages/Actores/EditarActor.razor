@@ -1,0 +1,22 @@
+@page "/actores/editar/{ActorId:int}"
+@using Peliculas.Client.Pages.Componentes
+
+<FormularioActor OnValidSubmit="Editar" Actor="Actor"></FormularioActor>
+@code
+{
+    [Parameter] public int ActorId{get;set;}
+    Actor Actor = new Actor();
+    protected override void OnInitialized()
+    {
+        Actor= new Actor()
+        {
+            Id= ActorId,
+            NombreActor ="Will Smith",
+            FechaNacimiento = DateTime.Today
+        };
+    }
+    private void Editar()
+    {
+        Console.WriteLine("Editando actor");
+    }
+}

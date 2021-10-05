@@ -1,0 +1,30 @@
+<div>
+    <h2 class="text-center">Listado de Peliculas</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var actor in Actores)
+        {
+                <div class ="card-deck mb-3"> 
+                    <div class="card border-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <h4 class="fw-bold">@actor.NombreActor</h4>
+                        </div> 
+                        <div class="card-body">  
+                            <p class= "card-text">Tipo de Documento : @actor.TipoDocumento</p>
+                            <p class= "card-text">Documento : @actor.Documento</p>
+                            <p class= "card-text">Genero: @actor.Genero</p>
+                            <p class= "card-text">Nominaciones: @actor.Nominaciones</p>
+                            <p class= "card-text">Biografia : @actor.Biografia</p>
+                        </div>  
+                        <div class="card-footer">
+                            <small class="text-muted">Fecha de Nacimiento: @actor.FechaNacimiento</small>
+                        </div> 
+                    </div>
+                </div>          
+        }
+    </div>
+</div>
+
+@code
+{
+    [Parameter] public List<Actor> Actores {get;set;}
+}

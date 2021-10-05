@@ -1,0 +1,12 @@
+@page "/categoria/crear"
+@using Peliculas.Client.Pages.Componentes
+<h6>Crear categoria</h6>
+<FormularioCategoria OnValidSubmit="Crear" Categoria="Categoria"></FormularioCategoria>
+@code 
+{
+    private Categoria Categoria = new Categoria();
+    private void Crear()
+    {
+        Console.WriteLine($"Nombre de la categoria de peliculas {Categoria.Nombre}");
+    }
+}

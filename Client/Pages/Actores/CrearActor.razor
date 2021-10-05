@@ -1,0 +1,11 @@
+@page "/actores/crear"
+@using Peliculas.Client.Pages.Componentes
+<FormularioActor OnValidSubmit ="Crear" Actor="Actor"></FormularioActor>
+@code
+{
+    private Actor Actor = new Actor();
+    void Crear()
+    {
+        Console.WriteLine("");
+    }
+}

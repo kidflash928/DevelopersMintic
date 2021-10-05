@@ -1,0 +1,84 @@
+@page "/peliculas/buscar"
+@using Peliculas.Client.Pages.Componentes
+@inject IserviciosPeliculas pelicula
+<div class ="jumbotron">
+    <div class = "form-inline">
+        <div class = "form-group mb-2">
+            <label for="pelicula_nombre" class="sr-only">Nombre pelicula</label>
+            <input type="text" @bind-value="pelicula_nombre" @bind-value:event ="oninput"
+                @onkeypress="@((KeyboardEventArgs e)=>PeliculaNombrekeyPress(e))" class="form-control" id="pelicula_nombre"
+                placeholder="Buscar pelicula"/>
+        </div>
+
+        <div class="form-group mx-sm-3 mb-2">
+            <select class="form-control"@bind="categoriaSeleccionada">
+                <option value="0">Seleccione una categoria</option>
+                @foreach (var item in categorias)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="checkbox" class="form-check-input" id="estrenos" @bind="futurosEstrenos">
+            <label class="form-check-label" for="estrenos">Futuros estrenos</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="checkbox" class="form-check-input" id="cartelera" @bind="enCartelera">
+            <label class="form-check-label" for="cartelera">En cartelera</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="checkbox" class="form-check-input" id="mejor_calificadas" @bind="mejorCalificadas">
+            <label class="form-check-label" for="mejor_calificadas">Mejor calificadas</label>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary mb-2 mx-sm-3" @onclick="CargarNuevasPeliculas">Filtrar</button>
+    <button type="button" class="btn btn-danger mb-2 mx-sm-3" @onclick="LimpiarCampos">Limpiar campos</button>
+</div>
+<ComponentePeliculas Peliculas="Peliculas"></ComponentePeliculas>
+
+@code
+{
+    private List<Pelicula> Peliculas;
+    string pelicula_nombre ="";
+    string categoriaSeleccionada ="";
+    private bool futurosEstrenos = false;
+    private bool enCartelera= false;
+    private bool mejorCalificadas = false;
+
+    protected override void OnInitialized()
+    {
+        Peliculas = pelicula.GetPelicula();
+    }
+
+    private List<Categoria> categorias = new List<Categoria>();
+    private void PeliculaNombrekeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key =="Enter")
+        {
+            CargarNuevasPeliculas();
+        }
+    }
+
+    private void CargarNuevasPeliculas()
+    {
+        Peliculas = pelicula.GetPelicula().Where(x=>x.Nombre.ToLower().Contains(pelicula_nombre.ToLower())).ToList();
+        Console.WriteLine($"Nombre pelicula: {pelicula_nombre}");
+        Console.WriteLine($"Categoría seleccionada: {categoriaSeleccionada}");
+        Console.WriteLine($"En cartelera{enCartelera}");
+        Console.WriteLine($"Futuros estrenos: {futurosEstrenos}");
+        Console.WriteLine($"Mejor calificada: {mejorCalificadas}");
+    }
+
+    private void LimpiarCampos()
+    {
+        Peliculas = pelicula.GetPelicula();
+        pelicula_nombre ="";
+        categoriaSeleccionada ="0";
+        futurosEstrenos = false;
+        enCartelera= false;
+        mejorCalificadas = false;
+    }
+}
