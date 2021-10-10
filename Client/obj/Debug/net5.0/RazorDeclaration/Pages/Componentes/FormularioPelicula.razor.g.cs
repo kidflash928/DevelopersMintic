@@ -118,13 +118,14 @@ using Peliculas.Client.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 67 "C:\Proyecto_Ciclo3\Peliculas\Client\Pages\Componentes\FormularioPelicula.razor"
+#line 81 "C:\Proyecto_Ciclo3\Peliculas\Client\Pages\Componentes\FormularioPelicula.razor"
  
     [Parameter] public Pelicula Pelicula {get;set;}
     [Parameter] public EventCallback OnValidSubmit {get;set;}
     [Parameter] public List<Categoria> CategoriasSeleccionadas {get;set;} = new List<Categoria>();
     [Parameter] public List<Categoria> CategoriasNoSeleccionadas {get;set;} = new List<Categoria>();
-
+    [Parameter] public List<Actor> ActoresSeleccionados {get;set;}=new List<Actor>();
+        
     private string posterTemporal;
     private List<SelectorMultipleModel> NoSeleccionados {get;set;} = new List<SelectorMultipleModel>();
     
@@ -144,6 +145,14 @@ using Peliculas.Client.Model;
             posterTemporal = Pelicula.Imagen;
             Pelicula.Imagen = null;
         }
+    }
+    private async Task<IEnumerable<Actor>> BuscarActores (string searchText)
+    {
+        return new List<Actor>(){
+            new Actor(){Id=1, NombreActor="Yaneth Mejia",Foto="https://pbs.twimg.com/profile_images/1079060744891785216/dAsFSbHH_400x400.jpg"},
+            new Actor(){Id=2,NombreActor ="Carolina Marquez", Foto="https://archivo.autonoma.edu.co/sites/default/files/styles/medium/public/carolina-marquez-narvaez.jpg?itok=CcL43PAR"},
+            new Actor(){Id=3,NombreActor="Juan Esteban",Foto="https://cdn1.vectorstock.com/i/1000x1000/29/65/cinema-award-best-actor-flat-style-vector-13602965.jpg"}
+        };
     }
 
 #line default

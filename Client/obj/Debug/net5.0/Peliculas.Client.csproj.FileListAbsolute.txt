@@ -670,3 +670,7 @@ C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Comp
 C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Componentes\SelectorMultiple.razor.g.cs
 C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\Razor\Pages\Componentes\FormularioPelicula.razor.g.cs
 C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\Razor\Pages\Componentes\SelectorMultiple.razor.g.cs
+C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Componentes\CustomTypeaHead.razor.g.cs
+C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\Razor\Pages\Componentes\CustomTypeaHead.razor.g.cs
+C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Componentes\SelectorMultipleTypeaHead.razor.g.cs
+C:\Proyecto_Ciclo3\Peliculas\Client\obj\Debug\net5.0\Razor\Pages\Componentes\SelectorMultipleTypeaHead.razor.g.cs

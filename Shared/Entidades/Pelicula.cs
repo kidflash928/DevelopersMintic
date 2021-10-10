@@ -19,6 +19,7 @@ namespace Peliculas.Shared.Entidades
         public string Trailer {get;set;}
         [Required (ErrorMessage = "El campo {0} es requerido")]
         public List <CategoriaPelicula> CategoriaPelicula {get;set;} = new List <CategoriaPelicula> ();
+        public List<PeliculaActor> PeliculaActor {get;set;}
         public string Director{get;set;}
         public string NombreCorto
         {

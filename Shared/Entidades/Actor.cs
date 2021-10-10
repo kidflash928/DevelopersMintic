@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 namespace Peliculas.Shared.Entidades
 {
     public class Actor
@@ -12,7 +13,9 @@ namespace Peliculas.Shared.Entidades
         public Genero Genero{get;set;}
         [Required (ErrorMessage = "El campo fecha de nacimiento del actor es requerido")]
         public DateTime? FechaNacimiento{get;set;}
+        public int Creditos {get;set;}
         public int Nominaciones {get;set;}
+        public List<PeliculaActor> PeliculaActor {get;set;}
         public string Biografia{get;set;}
         public string Foto {get;set;}
     }
